@@ -16,7 +16,11 @@ Which customers and products create the most profit, which ones destroy margin, 
 
 ### 1. Profit is broad, not extremely concentrated
 
-The dataset contains 795 customers. The top 427 profitable customers generate 80% of positive customer profit. This means profit is meaningful across a wide customer base rather than being driven by only a handful of accounts.
+The dataset contains 795 customers. Of these, 728 customers are profitable and 67 are loss-making. The top 427 profitable customers generate 80% of positive customer profit, which means about 59% of profitable customers, roughly 60%, are needed to reach 80% of positive profit.
+
+This means profit is meaningful across a wide customer base rather than being driven by only a handful of accounts.
+
+ABC classes are based on cumulative positive customer profit. Class A customers generate the first 80% of positive profit, Class B customers bring cumulative profit from 80% to 95%, and Class C customers complete the remaining profitable customer base. Loss customers have negative total profit and are separated from the profitable ABC groups.
 
 ![Customer Profit Pareto Curve](charts/customer_profit_pareto.png)
 

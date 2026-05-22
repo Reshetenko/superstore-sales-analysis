@@ -75,7 +75,7 @@
 \begin{titlepage}
     \thispagestyle{fancy}
     \vspace*{8mm}
-    {\Huge\bfseries\color{ink} Customer and Product Profitability Analysis\par}
+    {\Huge\bfseries\color{ink} Customer and Product Profitability\\[2mm]Analysis\par}
     \vspace{3mm}
     {\Large\color{muted} A deep dive into profit concentration, customer value, and product-level losses\par}
     \vspace{12mm}
@@ -101,7 +101,7 @@
         \toprule
         Business question & Which customers and products create the most profit, which ones destroy margin, and how concentrated is profit across the customer base? \\
         Scope & 795 customers, 3,788 products, 2011--2014 \\
-        Main customer finding & 427 profitable customers generate 80\% of positive customer profit \\
+        Main customer finding & 427 of 728 profitable customers, about 59\%, generate 80\% of positive customer profit \\
         Main product finding & Losses are concentrated in selected Technology Machines and Furniture Tables products \\
         Main recommendation & Manage profitability at customer and product level, not by sales volume alone \\
         \bottomrule
@@ -114,8 +114,13 @@
 
 \section{1. Customer Profit Concentration}
 
-The customer base contains 795 unique customers. The top 427 profitable customers generate 80\% of positive customer profit.
+The customer base contains 795 unique customers. Of these, 728 customers are profitable and 67 customers are loss-making.
+The top 427 profitable customers generate 80\% of positive customer profit. This means that about 59\% of profitable customers, roughly 60\%, are needed to reach 80\% of positive profit.
 This is a relatively broad profit base, which means the business is not dependent on only a handful of accounts.
+
+ABC classes are based on cumulative positive customer profit.
+Class A customers generate the first 80\% of positive profit, Class B customers bring cumulative profit from 80\% to 95\%, and Class C customers complete the remaining profitable customer base.
+Loss customers have negative total profit and are separated from the profitable ABC groups.
 
 \begin{figure}[h]
     \centering

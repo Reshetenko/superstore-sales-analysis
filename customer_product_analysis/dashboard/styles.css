@@ -180,6 +180,14 @@ button:hover {
   white-space: nowrap;
 }
 
+.panel-note {
+  max-width: 980px;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 .chart {
   width: 100%;
   min-height: 330px;

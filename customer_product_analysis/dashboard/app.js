@@ -175,12 +175,18 @@ function table(el, rows, columns) {
 function update() {
   const filtered = filteredCustomers();
   const total = totals(filtered);
+  const profitableCustomers = customers.filter((row) => row.profit > 0).length;
+  const paretoShare = data.meta.customersFor80PctProfit / profitableCustomers;
   document.getElementById("customersKpi").textContent = integer.format(filtered.length);
   document.getElementById("productsKpi").textContent = integer.format(data.meta.products);
   document.getElementById("salesKpi").textContent = money(total.sales);
   document.getElementById("profitKpi").textContent = money(total.profit);
   document.getElementById("profitKpi").className = total.profit < 0 ? "negative" : "positive";
   document.getElementById("marginKpi").textContent = pct(total.margin);
+  document.getElementById("paretoExplanation").textContent =
+    `There are ${integer.format(data.meta.customers)} customers in total. ` +
+    `${integer.format(profitableCustomers)} are profitable, and ${integer.format(data.meta.customersFor80PctProfit)} of them ` +
+    `(${pct(paretoShare)}, roughly 60%) generate 80% of positive customer profit.`;
 
   paretoChart(document.getElementById("paretoChart"));
   barChart(
