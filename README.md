@@ -37,6 +37,8 @@ Interactive dashboard: [`dashboard/index.html`](dashboard/index.html)
 
 Customer and product profitability deep dive: [`customer_product_analysis/README.md`](customer_product_analysis/README.md)
 
+Customer/product PDF report: [`customer_product_analysis/customer_product_profitability_report.pdf`](customer_product_analysis/customer_product_profitability_report.pdf)
+
 ## Key Metrics
 
 | Metric | Value |
@@ -124,6 +126,12 @@ Open the case study:
 customer_product_analysis/README.md
 ```
 
+Open the PDF report:
+
+```text
+customer_product_analysis/customer_product_profitability_report.pdf
+```
+
 ## Project Structure
 
 ```text
@@ -138,6 +146,8 @@ customer_product_analysis/README.md
 │   └── styles.css
 ├── customer_product_analysis
 │   ├── README.md
+│   ├── customer_product_profitability_report.pdf
+│   ├── customer_product_profitability_report.tex
 │   ├── charts
 │   └── tables
 ├── reports

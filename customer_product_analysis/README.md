@@ -2,6 +2,10 @@
 
 This portfolio case extends the SuperStore sales analysis with a deeper look at customer and product profitability.
 
+PDF report: [`customer_product_profitability_report.pdf`](customer_product_profitability_report.pdf)
+
+LaTeX source: [`customer_product_profitability_report.tex`](customer_product_profitability_report.tex)
+
 ## Business Question
 
 Which customers and products create the most profit, which ones destroy margin, and how concentrated is profit across the customer base?

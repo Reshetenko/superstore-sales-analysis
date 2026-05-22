@@ -1,0 +1,264 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{fancyhdr}
+
+\setmainlanguage{english}
+\setmainfont{Arial}
+
+\geometry{top=20mm,bottom=20mm,left=18mm,right=18mm}
+\setlength{\headheight}{14pt}
+\graphicspath{{customer_product_analysis/charts/}}
+
+\definecolor{ink}{HTML}{17202A}
+\definecolor{muted}{HTML}{5D6D7E}
+\definecolor{blue}{HTML}{2D67B4}
+\definecolor{green}{HTML}{238C5F}
+\definecolor{red}{HTML}{C44348}
+\definecolor{panel}{HTML}{F4F6F8}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textcolor{muted}{Customer and Product Profitability Analysis}}
+\rhead{\textcolor{muted}{Global SuperStore}}
+\cfoot{\textcolor{muted}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+
+\titleformat{\section}
+  {\Large\bfseries\color{ink}}
+  {}
+  {0pt}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{ink}}
+  {}
+  {0pt}
+  {}
+
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\captionsetup{font=small,labelfont=bf}
+
+\newcommand{\metric}[2]{
+    \begin{minipage}[t]{0.18\textwidth}
+        \colorbox{panel}{
+            \begin{minipage}[t][25mm][c]{0.92\linewidth}
+                \centering
+                {\Large\bfseries\color{ink} #1}\\[2mm]
+                {\small\color{muted} #2}
+            \end{minipage}
+        }
+    \end{minipage}
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \thispagestyle{fancy}
+    \vspace*{8mm}
+    {\Huge\bfseries\color{ink} Customer and Product Profitability Analysis\par}
+    \vspace{3mm}
+    {\Large\color{muted} A deep dive into profit concentration, customer value, and product-level losses\par}
+    \vspace{12mm}
+
+    \metric{795}{Customers}
+    \hfill
+    \metric{3,788}{Products}
+    \hfill
+    \metric{427}{Customers for 80\% profit}
+    \hfill
+    \metric{67}{Loss-making customers}
+    \hfill
+    \metric{3}{Segments}
+
+    \vspace{14mm}
+    \section*{Executive Summary}
+    This analysis extends the SuperStore sales performance work by focusing on customer and product profitability.
+    The key finding is that profit is meaningful across a broad customer base rather than being dominated by only a few accounts.
+    At the same time, losses are clearly concentrated in a smaller group of customers and specific products, especially 3D printers, machines, and tables.
+
+    \vspace{4mm}
+    \begin{tabularx}{\textwidth}{>{\bfseries}p{45mm}X}
+        \toprule
+        Business question & Which customers and products create the most profit, which ones destroy margin, and how concentrated is profit across the customer base? \\
+        Scope & 795 customers, 3,788 products, 2011--2014 \\
+        Main customer finding & 427 profitable customers generate 80\% of positive customer profit \\
+        Main product finding & Losses are concentrated in selected Technology Machines and Furniture Tables products \\
+        Main recommendation & Manage profitability at customer and product level, not by sales volume alone \\
+        \bottomrule
+    \end{tabularx}
+
+    \vfill
+    {\color{muted} Prepared as a data analytics portfolio case study.}
+\end{titlepage}
+\setcounter{page}{2}
+
+\section{1. Customer Profit Concentration}
+
+The customer base contains 795 unique customers. The top 427 profitable customers generate 80\% of positive customer profit.
+This is a relatively broad profit base, which means the business is not dependent on only a handful of accounts.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{customer_profit_pareto.png}
+    \caption{Customer profit Pareto curve}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrr}
+    \toprule
+    Class & Customers & Sales & Profit \\
+    \midrule
+    A & 427 & \$7,589,112 & \$1,227,368 \\
+    B & 169 & \$2,343,587 & \$229,796 \\
+    C & 132 & \$1,761,355 & \$77,384 \\
+    Loss & 67 & \$948,851 & -\$65,513 \\
+    \bottomrule
+\end{tabularx}
+
+\section{2. Most Profitable Customers}
+
+The most profitable customers combine meaningful sales volume with strong margin performance.
+They are not simply the largest buyers; they also generate attractive profit per dollar of sales.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{top_customers_profit.png}
+    \caption{Top customers by profit}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrr}
+    \toprule
+    Customer & Profit & Sales & Profit margin \\
+    \midrule
+    Tamara Chand & \$8,673 & \$37,453 & 23.2\% \\
+    Raymond Buch & \$8,453 & \$29,601 & 28.6\% \\
+    Sanjit Chand & \$8,205 & \$26,524 & 30.9\% \\
+    Hunter Lopez & \$7,817 & \$30,246 & 25.8\% \\
+    Bill Eplett & \$7,410 & \$28,480 & 26.0\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{3. Loss-Making Customers}
+
+There are 67 customers with negative total profit.
+These customers are not automatically bad accounts, but they should be reviewed before additional discounts or promotions are expanded to them.
+The review should focus on discounting, product mix, shipping economics, and whether losses are isolated or recurring.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{bottom_customers_profit.png}
+    \caption{Bottom customers by profit}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrr}
+    \toprule
+    Customer & Profit & Sales & Profit margin \\
+    \midrule
+    Cindy Stewart & -\$6,152 & \$13,432 & -45.8\% \\
+    Luke Foster & -\$3,644 & \$13,422 & -27.2\% \\
+    Grant Thornton & -\$3,578 & \$20,226 & -17.7\% \\
+    Candace McMahon & -\$2,799 & \$14,798 & -18.9\% \\
+    Skye Norling & -\$2,638 & \$14,225 & -18.5\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{4. Product Profitability}
+
+The strongest products are mostly Technology items, especially copiers, phones, and routers.
+These products combine scale with strong profit margins.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{top_products_profit.png}
+    \caption{Top products by profit}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{Xrrr}
+    \toprule
+    Product & Profit & Sales & Profit margin \\
+    \midrule
+    Canon imageCLASS 2200 Advanced Copier & \$25,200 & \$61,600 & 40.9\% \\
+    Cisco Smart Phone, Full Size & \$17,239 & \$76,441 & 22.6\% \\
+    Motorola Smart Phone, Full Size & \$17,027 & \$73,159 & 23.3\% \\
+    Hoover Stove, Red & \$11,808 & \$31,664 & 37.3\% \\
+    Sauder Classic Bookcase, Traditional & \$10,672 & \$39,110 & 27.3\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{5. Product Losses}
+
+The largest product losses are concentrated in selected Technology Machines and Furniture Tables products.
+This aligns with the earlier category-level finding that Tables reduce Furniture profitability.
+High average discounts are a common pattern among the weakest products.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{bottom_products_profit.png}
+    \caption{Bottom products by profit}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{Xrrr}
+    \toprule
+    Product & Profit & Sales & Profit margin \\
+    \midrule
+    Cubify CubeX 3D Printer Double Head Print & -\$8,880 & \$11,100 & -80.0\% \\
+    Lexmark MX611dhe Monochrome Laser Printer & -\$4,590 & \$16,830 & -27.3\% \\
+    Motorola Smart Phone, Cordless & -\$4,447 & \$38,935 & -11.4\% \\
+    Cubify CubeX 3D Printer Triple Head Print & -\$3,840 & \$8,000 & -48.0\% \\
+    Bevis Round Table, Adjustable Height & -\$3,650 & \$5,655 & -64.5\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{6. Segment View}
+
+Customer segment is less important than product mix and discount behavior.
+Consumer, Corporate, and Home Office all show similar profit margins around 11.5--12.0\%.
+
+\begin{tabularx}{\textwidth}{lrrr}
+    \toprule
+    Segment & Sales & Profit & Profit margin \\
+    \midrule
+    Consumer & \$6,508,141 & \$749,240 & 11.5\% \\
+    Corporate & \$3,824,808 & \$442,786 & 11.6\% \\
+    Home Office & \$2,309,956 & \$277,009 & 12.0\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{Recommendations}
+
+\begin{itemize}
+    \item Protect high-profit customers with targeted retention and service quality.
+    \item Review the 67 loss-making customers before expanding discounts or promotions to them.
+    \item Investigate high-loss products, especially 3D printers, machines, and tables.
+    \item Use customer profitability, not sales alone, as the primary account-prioritization metric.
+    \item Keep segment-level strategy broad, but manage discounting and product mix at customer/product level.
+\end{itemize}
+
+\section{Appendix: Reproducibility}
+
+The analysis can be reproduced with:
+
+\begin{verbatim}
+python scripts/customer_product_analysis.py
+\end{verbatim}
+
+\end{document}
