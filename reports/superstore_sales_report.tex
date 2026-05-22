@@ -1,0 +1,274 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\setmainlanguage{english}
+\setmainfont{Arial}
+
+\geometry{top=20mm,bottom=20mm,left=18mm,right=18mm}
+\setlength{\headheight}{14pt}
+\graphicspath{{outputs/charts/}}
+
+\definecolor{ink}{HTML}{17202A}
+\definecolor{muted}{HTML}{5D6D7E}
+\definecolor{blue}{HTML}{2D67B4}
+\definecolor{green}{HTML}{238C5F}
+\definecolor{red}{HTML}{C44348}
+\definecolor{panel}{HTML}{F4F6F8}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textcolor{muted}{SuperStore Sales Performance Analysis}}
+\rhead{\textcolor{muted}{2011--2014}}
+\cfoot{\textcolor{muted}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+
+\titleformat{\section}
+  {\Large\bfseries\color{ink}}
+  {}
+  {0pt}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{ink}}
+  {}
+  {0pt}
+  {}
+
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\captionsetup{font=small,labelfont=bf}
+
+\newcommand{\metric}[2]{
+    \begin{minipage}[t]{0.18\textwidth}
+        \colorbox{panel}{
+            \begin{minipage}[t][25mm][c]{0.92\linewidth}
+                \centering
+                {\Large\bfseries\color{ink} #1}\\[2mm]
+                {\small\color{muted} #2}
+            \end{minipage}
+        }
+    \end{minipage}
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \thispagestyle{fancy}
+    \vspace*{8mm}
+    {\Huge\bfseries\color{ink} SuperStore Sales Performance Analysis\par}
+    \vspace{3mm}
+    {\Large\color{muted} Analytical report on sales, profit, and discount performance from 2011 to 2014\par}
+    \vspace{12mm}
+
+    \metric{\$12.6M}{Sales}
+    \hfill
+    \metric{\$1.47M}{Profit}
+    \hfill
+    \metric{11.6\%}{Profit margin}
+    \hfill
+    \metric{24.5\%}{Loss-making rows}
+    \hfill
+    \metric{51,290}{Rows}
+
+    \vspace{14mm}
+    \section*{Executive Summary}
+    Global Superstore sales grew steadily from \$2.26M in 2011 to \$4.30M in 2014.
+    Profit also increased, but overall profitability remains moderate at an 11.6\% profit margin.
+    The main business risk is not demand volume; it is discount discipline. Nearly one quarter of transaction rows are loss-making, and discounts above 20\% systematically push orders into negative margin territory.
+
+    \vspace{4mm}
+    \begin{tabularx}{\textwidth}{>{\bfseries}p{42mm}X}
+        \toprule
+        Business question & Which markets, categories, and discount policies generate profit, and where does the company lose money? \\
+        Analysis period & 2011--2014 \\
+        Data scope & 25,035 orders, 795 customers, 7 markets \\
+        Main risk & High discounts and concentrated losses in specific countries and sub-categories \\
+        Key recommendation & Cap discounts above 20\% and review the Tables sub-category strategy \\
+        \bottomrule
+    \end{tabularx}
+
+    \vfill
+    {\color{muted} Prepared as a data analytics portfolio case study.}
+\end{titlepage}
+\setcounter{page}{2}
+
+\section{1. Sales and Profit Trend}
+
+Sales increased by 90.3\% between 2011 and 2014, from \$2.26M to \$4.30M.
+Profit grew from \$249K to \$504K over the same period.
+However, profit did not scale as efficiently as revenue, which suggests that discounting and loss-making categories limit operating leverage.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{sales_profit_trend.png}
+    \caption{Sales and profit by year}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrrr}
+    \toprule
+    Year & Sales & Profit & Orders & Profit margin \\
+    \midrule
+    2011 & \$2,259,511 & \$248,941 & 4,440 & 11.0\% \\
+    2012 & \$2,677,493 & \$307,415 & 5,343 & 11.5\% \\
+    2013 & \$3,405,860 & \$408,513 & 6,721 & 12.0\% \\
+    2014 & \$4,300,041 & \$504,166 & 8,531 & 11.7\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{2. Market Performance}
+
+Profit is concentrated in APAC, EU, and the US. These markets provide the largest absolute profit contribution.
+Canada has the strongest margin at 26.6\%, but its sales base is too small to act as the primary growth driver.
+EMEA is the weakest market by profitability, generating only \$44K in profit at a 5.4\% margin.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{profit_by_market.png}
+    \caption{Profit by market}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrrr}
+    \toprule
+    Market & Sales & Profit & Avg. discount & Profit margin \\
+    \midrule
+    APAC & \$3,585,833 & \$437,578 & 14.9\% & 12.2\% \\
+    EU & \$2,938,139 & \$372,830 & 10.3\% & 12.7\% \\
+    US & \$2,297,354 & \$286,397 & 15.6\% & 12.5\% \\
+    LATAM & \$2,164,687 & \$221,643 & 13.6\% & 10.2\% \\
+    Africa & \$783,776 & \$88,872 & 15.7\% & 11.3\% \\
+    EMEA & \$806,184 & \$43,898 & 19.6\% & 5.4\% \\
+    Canada & \$66,932 & \$17,817 & 0.0\% & 26.6\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{3. Category Performance}
+
+Technology and Office Supplies perform similarly, with profit margins of 14.0\% and 13.7\%.
+Furniture is materially weaker at a 7.0\% margin.
+The main issue inside Furniture is the Tables sub-category, which generated a \$64K loss.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.92\textwidth]{margin_by_category.png}
+    \caption{Profit margin by category}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrrr}
+    \toprule
+    Category & Sales & Profit & Avg. discount & Profit margin \\
+    \midrule
+    Technology & \$4,744,691 & \$663,779 & 13.5\% & 14.0\% \\
+    Office Supplies & \$3,787,330 & \$518,474 & 13.7\% & 13.7\% \\
+    Furniture & \$4,110,884 & \$286,782 & 16.8\% & 7.0\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{4. Discount Impact}
+
+The strongest finding is the relationship between discounts and profitability.
+Orders with no discount have a 25.3\% profit margin.
+At 20--30\% discounts, margin already turns negative at -5.5\%.
+At discounts above 50\%, losses become severe, with a -111.0\% profit margin.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{margin_by_discount.png}
+    \caption{Profit margin by discount bucket}
+\end{figure}
+
+\begin{tabularx}{\textwidth}{lrrrr}
+    \toprule
+    Discount bucket & Sales & Profit & Orders & Profit margin \\
+    \midrule
+    0\% & \$6,992,734 & \$1,770,695 & 15,211 & 25.3\% \\
+    0--10\% & \$1,962,633 & \$339,767 & 3,028 & 17.3\% \\
+    10--20\% & \$1,757,296 & \$173,255 & 4,363 & 9.9\% \\
+    20--30\% & \$382,540 & -\$21,156 & 843 & -5.5\% \\
+    30--50\% & \$1,176,078 & -\$380,945 & 3,674 & -32.4\% \\
+    50\%+ & \$371,624 & -\$412,582 & 2,369 & -111.0\% \\
+    \bottomrule
+\end{tabularx}
+
+\subsection{Discount impact by category}
+
+The overall discount chart includes all markets, countries, categories, segments, and years.
+The category-level view confirms that the discount pattern is broad-based: every major category becomes loss-making once discounts reach the 20--30\% range.
+Furniture is the weakest category before heavy discounts as well, with only a 4.6\% margin at 10--20\% discounts.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{discount_impact_by_category.png}
+    \caption{Profit margin by discount bucket and category}
+\end{figure}
+
+\subsection{Discount impact by market}
+
+The market-level view shows that the same discount threshold is visible across most major markets.
+APAC, EU, US, and LATAM are profitable up to the 10--20\% bucket, but each turns negative at 20--30\%.
+Africa and EMEA have fewer intermediate discount buckets in the dataset, but their 50\%+ discount buckets show severe losses.
+Canada has no discounted sales in this dataset, so only the 0\% bucket is available.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{discount_impact_by_market.png}
+    \caption{Profit margin by discount bucket and market}
+\end{figure}
+
+\section{5. Loss Concentration by Country}
+
+Losses are concentrated in countries with high average discounts.
+Turkey, Nigeria, and the Netherlands are among the largest negative-profit countries.
+This points to a commercial policy issue, not just a local demand or operations issue.
+
+\begin{tabularx}{\textwidth}{lrrrr}
+    \toprule
+    Country & Sales & Profit & Avg. discount & Profit margin \\
+    \midrule
+    Turkey & \$108,524 & -\$98,447 & 60.0\% & -90.7\% \\
+    Nigeria & \$54,347 & -\$80,751 & 70.0\% & -148.6\% \\
+    Netherlands & \$77,520 & -\$41,070 & 48.2\% & -53.0\% \\
+    Honduras & \$90,137 & -\$29,482 & 40.7\% & -32.7\% \\
+    Pakistan & \$58,873 & -\$22,447 & 44.5\% & -38.1\% \\
+    \bottomrule
+\end{tabularx}
+
+\section{Recommendations}
+
+\begin{itemize}
+    \item Cap discounts above 20\%, especially in countries and categories with negative margins.
+    \item Review the Tables strategy, including pricing, discount rules, logistics, and product mix.
+    \item Scale proven practices from APAC, EU, and the US because these markets generate the largest absolute profit.
+    \item Audit EMEA, Turkey, and Nigeria at the pricing and promotional-policy level.
+    \item Use Canada as a profitability benchmark, but not as the main growth driver because of its small sales base.
+\end{itemize}
+
+\section{Appendix: Reproducibility}
+
+The analysis can be reproduced with:
+
+\begin{verbatim}
+python scripts/analyze_superstore.py
+\end{verbatim}
+
+\end{document}
