@@ -35,6 +35,8 @@ LaTeX source: [`reports/superstore_sales_report.tex`](reports/superstore_sales_r
 
 Interactive dashboard: [`dashboard/index.html`](dashboard/index.html)
 
+Customer and product profitability deep dive: [`customer_product_analysis/README.md`](customer_product_analysis/README.md)
+
 ## Key Metrics
 
 | Metric | Value |
@@ -112,6 +114,16 @@ Open locally:
 dashboard/index.html
 ```
 
+## Customer and Product Deep Dive
+
+The third analysis looks at customer and product profitability, including top and bottom customers, top and bottom products, ABC/Pareto analysis, and segment-level margins.
+
+Open the case study:
+
+```text
+customer_product_analysis/README.md
+```
+
 ## Project Structure
 
 ```text
@@ -124,12 +136,17 @@ dashboard/index.html
 │   ├── data.js
 │   ├── index.html
 │   └── styles.css
+├── customer_product_analysis
+│   ├── README.md
+│   ├── charts
+│   └── tables
 ├── reports
 │   ├── superstore_sales_report.pdf
 │   └── superstore_sales_report.tex
 ├── scripts
 │   ├── analyze_superstore.py
-│   └── build_dashboard_data.py
+│   ├── build_dashboard_data.py
+│   └── customer_product_analysis.py
 └── outputs
     ├── charts
     │   ├── margin_by_category.png
@@ -165,4 +182,10 @@ To regenerate the dashboard data:
 
 ```bash
 python scripts/build_dashboard_data.py
+```
+
+To regenerate the customer and product deep dive:
+
+```bash
+python scripts/customer_product_analysis.py
 ```

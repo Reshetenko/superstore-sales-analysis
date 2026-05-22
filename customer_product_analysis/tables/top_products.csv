@@ -1,0 +1,21 @@
+product_name,category,sub_category,sales,profit,quantity,rows,orders,avg_discount,profit_margin
+Canon imageCLASS 2200 Advanced Copier,Technology,Copiers,61600,25199.928,20,5,5,0.12000000000000002,0.40908974025974026
+"Cisco Smart Phone, Full Size",Technology,Phones,76441,17238.5206,139,38,38,0.05447368421052631,0.22551406444185712
+"Motorola Smart Phone, Full Size",Technology,Phones,73159,17027.113,134,38,38,0.14763157894736842,0.23274119383807873
+"Hoover Stove, Red",Office Supplies,Appliances,31664,11807.969000000001,62,15,15,0.06666666666666667,0.3729146349166246
+"Sauder Classic Bookcase, Traditional",Furniture,Bookcases,39110,10672.073,113,29,29,0.11896551724137931,0.27287325492201486
+"Harbour Creations Executive Leather Armchair, Adjustable",Furniture,Chairs,50120,10427.326,142,39,39,0.17897435897435898,0.2080472067039106
+"Nokia Smart Phone, Full Size",Technology,Phones,71904,9938.1955,147,47,47,0.14446808510638298,0.13821477942812638
+"Cisco Smart Phone, with Caller ID",Technology,Phones,43124,9786.640800000001,85,27,27,0.14703703703703702,0.22694186068082742
+"Nokia Smart Phone, with Caller ID",Technology,Phones,47880,9465.3257,96,24,24,0.1475,0.1976885066833751
+"Belkin Router, USB",Technology,Accessories,23473,8955.018,110,32,32,0.09687499999999999,0.38150291824649596
+"Hewlett Wireless Fax, High-Speed",Technology,Copiers,23811,8677.93914,75,22,22,0.042272727272727274,0.3644508479274285
+"Canon Wireless Fax, Laser",Technology,Copiers,21928,7991.54792,66,17,17,0.059294117647058824,0.36444490696825976
+Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind,Office Supplies,Binders,27454,7753.039,31,10,10,0.24000000000000005,0.28240107088220295
+"Memorex Router, Erganomic",Technology,Accessories,21887,7468.184,111,25,25,0.076,0.3412155160597615
+"SAFCO Executive Leather Armchair, Black",Furniture,Chairs,41921,7154.28,111,28,28,0.16392857142857142,0.170661005224112
+Hewlett Packard LaserJet 3310 Copier,Technology,Copiers,18840,6983.8836,38,8,8,0.2,0.37069445859872613
+"Rogers Lockers, Single Width",Office Supplies,Storage,20496,6755.184,114,34,34,0.09735294117647059,0.32958548009367683
+"Dania Classic Bookcase, Pine",Furniture,Bookcases,25629,6565.0146,88,22,22,0.135,0.25615570642631397
+"Brother Copy Machine, Color",Technology,Copiers,26220,6520.05006,125,43,43,0.11879069767441859,0.2486670503432494
+"Bush Classic Bookcase, Pine",Furniture,Bookcases,16752,6510.674,50,13,13,0.12692307692307692,0.3886505491881566
