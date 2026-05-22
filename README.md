@@ -33,6 +33,8 @@ PDF analytical report: [`reports/superstore_sales_report.pdf`](reports/superstor
 
 LaTeX source: [`reports/superstore_sales_report.tex`](reports/superstore_sales_report.tex)
 
+Interactive dashboard: [`dashboard/index.html`](dashboard/index.html)
+
 ## Key Metrics
 
 | Metric | Value |
@@ -100,6 +102,16 @@ This points to a commercial policy issue, not only a demand issue.
 4. Audit EMEA, Turkey, and Nigeria at the pricing and promotional-policy level.
 5. Use Canada as a profitability benchmark, but not as the main growth driver because of its small sales base.
 
+## Interactive Dashboard
+
+The project also includes a static browser dashboard with filters for year, market, and category. It summarizes sales, profit, profit margin, order lines, loss-making row share, market contribution, category margin, discount impact, country losses, and weakest products.
+
+Open locally:
+
+```text
+dashboard/index.html
+```
+
 ## Project Structure
 
 ```text
@@ -107,11 +119,17 @@ This points to a commercial policy issue, not only a demand issue.
 ├── SuperStoreOrders.csv
 ├── README.md
 ├── requirements.txt
+├── dashboard
+│   ├── app.js
+│   ├── data.js
+│   ├── index.html
+│   └── styles.css
 ├── reports
 │   ├── superstore_sales_report.pdf
 │   └── superstore_sales_report.tex
 ├── scripts
-│   └── analyze_superstore.py
+│   ├── analyze_superstore.py
+│   └── build_dashboard_data.py
 └── outputs
     ├── charts
     │   ├── margin_by_category.png
@@ -142,3 +160,9 @@ python scripts/analyze_superstore.py
 ```
 
 The script regenerates summary tables and charts in the `outputs/` folder.
+
+To regenerate the dashboard data:
+
+```bash
+python scripts/build_dashboard_data.py
+```

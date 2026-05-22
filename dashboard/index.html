@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SuperStore Sales Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Global SuperStore</p>
+          <h1>Sales Performance Dashboard</h1>
+        </div>
+        <div class="period-badge" id="periodBadge">2011-2014</div>
+      </header>
+
+      <section class="filters" aria-label="Dashboard filters">
+        <label>
+          Year
+          <select id="yearFilter"></select>
+        </label>
+        <label>
+          Market
+          <select id="marketFilter"></select>
+        </label>
+        <label>
+          Category
+          <select id="categoryFilter"></select>
+        </label>
+        <button type="button" id="resetFilters" title="Reset filters">Reset</button>
+      </section>
+
+      <section class="kpi-grid" aria-label="Key metrics">
+        <article class="kpi">
+          <span>Sales</span>
+          <strong id="salesKpi">$0</strong>
+        </article>
+        <article class="kpi">
+          <span>Profit</span>
+          <strong id="profitKpi">$0</strong>
+        </article>
+        <article class="kpi">
+          <span>Profit Margin</span>
+          <strong id="marginKpi">0.0%</strong>
+        </article>
+        <article class="kpi">
+          <span>Order Lines</span>
+          <strong id="ordersKpi">0</strong>
+        </article>
+        <article class="kpi">
+          <span>Loss-Making Rows</span>
+          <strong id="lossRowsKpi">0.0%</strong>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel wide">
+          <div class="panel-heading">
+            <h2>Sales and Profit Trend</h2>
+            <span>by year</span>
+          </div>
+          <div id="trendChart" class="chart chart-tall"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Profit by Market</h2>
+            <span>sorted by contribution</span>
+          </div>
+          <div id="marketChart" class="chart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Profit Margin by Category</h2>
+            <span>profit / sales</span>
+          </div>
+          <div id="categoryChart" class="chart"></div>
+        </article>
+
+        <article class="panel wide">
+          <div class="panel-heading">
+            <h2>Discount Impact</h2>
+            <span>profit margin by discount bucket</span>
+          </div>
+          <div id="discountChart" class="chart chart-tall"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Largest Country Losses</h2>
+            <span>negative profit concentration</span>
+          </div>
+          <div id="countryTable" class="table-wrap"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Weakest Products</h2>
+            <span>bottom profit products</span>
+          </div>
+          <div id="productTable" class="table-wrap"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
