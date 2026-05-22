@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer and Product Profitability Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Global SuperStore</p>
+          <h1>Customer and Product Profitability Dashboard</h1>
+        </div>
+        <a class="report-link" href="../customer_product_profitability_report.pdf">PDF Report</a>
+      </header>
+
+      <section class="filters" aria-label="Dashboard filters">
+        <label>
+          Segment
+          <select id="segmentFilter"></select>
+        </label>
+        <label>
+          ABC Class
+          <select id="abcFilter"></select>
+        </label>
+        <button type="button" id="resetFilters">Reset</button>
+      </section>
+
+      <section class="kpi-grid" aria-label="Key metrics">
+        <article class="kpi">
+          <span>Customers</span>
+          <strong id="customersKpi">0</strong>
+        </article>
+        <article class="kpi">
+          <span>Products</span>
+          <strong id="productsKpi">0</strong>
+        </article>
+        <article class="kpi">
+          <span>Sales</span>
+          <strong id="salesKpi">$0</strong>
+        </article>
+        <article class="kpi">
+          <span>Profit</span>
+          <strong id="profitKpi">$0</strong>
+        </article>
+        <article class="kpi">
+          <span>Profit Margin</span>
+          <strong id="marginKpi">0.0%</strong>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel wide">
+          <div class="panel-heading">
+            <h2>Customer Profit Pareto</h2>
+            <span>share of profitable customers vs cumulative positive profit</span>
+          </div>
+          <div id="paretoChart" class="chart chart-tall"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Profit by Segment</h2>
+            <span>customer segment view</span>
+          </div>
+          <div id="segmentChart" class="chart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>ABC Summary</h2>
+            <span>customer profit classes</span>
+          </div>
+          <div id="abcTable" class="table-wrap"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Top Customers</h2>
+            <span>highest profit</span>
+          </div>
+          <div id="topCustomers" class="table-wrap"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Loss-Making Customers</h2>
+            <span>lowest profit</span>
+          </div>
+          <div id="bottomCustomers" class="table-wrap"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Top Products</h2>
+            <span>highest profit</span>
+          </div>
+          <div id="topProducts" class="table-wrap"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>Weakest Products</h2>
+            <span>lowest profit</span>
+          </div>
+          <div id="bottomProducts" class="table-wrap"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

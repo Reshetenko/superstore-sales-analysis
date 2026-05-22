@@ -6,6 +6,8 @@ PDF report: [`customer_product_profitability_report.pdf`](customer_product_profi
 
 LaTeX source: [`customer_product_profitability_report.tex`](customer_product_profitability_report.tex)
 
+Interactive dashboard: [`dashboard/index.html`](dashboard/index.html)
+
 ## Business Question
 
 Which customers and products create the most profit, which ones destroy margin, and how concentrated is profit across the customer base?
@@ -82,6 +84,13 @@ Customer segment is less important than product mix and discount behavior. Consu
 5. Keep segment-level strategy broad, but manage discounting and product mix at customer/product level.
 
 ## Outputs
+
+Dashboard:
+
+- `dashboard/index.html`
+- `dashboard/app.js`
+- `dashboard/data.js`
+- `dashboard/styles.css`
 
 Tables:
 

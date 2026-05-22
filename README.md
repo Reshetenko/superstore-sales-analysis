@@ -39,6 +39,8 @@ Customer and product profitability deep dive: [`customer_product_analysis/README
 
 Customer/product PDF report: [`customer_product_analysis/customer_product_profitability_report.pdf`](customer_product_analysis/customer_product_profitability_report.pdf)
 
+Customer/product dashboard: [`customer_product_analysis/dashboard/index.html`](customer_product_analysis/dashboard/index.html)
+
 ## Key Metrics
 
 | Metric | Value |
@@ -132,6 +134,12 @@ Open the PDF report:
 customer_product_analysis/customer_product_profitability_report.pdf
 ```
 
+Open the customer/product dashboard:
+
+```text
+customer_product_analysis/dashboard/index.html
+```
+
 ## Project Structure
 
 ```text
@@ -149,6 +157,7 @@ customer_product_analysis/customer_product_profitability_report.pdf
 │   ├── customer_product_profitability_report.pdf
 │   ├── customer_product_profitability_report.tex
 │   ├── charts
+│   ├── dashboard
 │   └── tables
 ├── reports
 │   ├── superstore_sales_report.pdf

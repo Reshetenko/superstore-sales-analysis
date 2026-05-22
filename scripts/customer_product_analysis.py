@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
@@ -9,6 +10,7 @@ DATA_PATH = ROOT / "SuperStoreOrders.csv"
 OUTPUT_DIR = ROOT / "customer_product_analysis"
 TABLE_DIR = OUTPUT_DIR / "tables"
 CHART_DIR = OUTPUT_DIR / "charts"
+DASHBOARD_DIR = OUTPUT_DIR / "dashboard"
 
 
 def money(value: float) -> str:
@@ -211,9 +213,45 @@ def save_outputs(df: pd.DataFrame) -> dict:
     return tables
 
 
+def to_records(table: pd.DataFrame) -> list[dict]:
+    return json.loads(table.to_json(orient="records"))
+
+
+def save_dashboard_data(tables: dict) -> None:
+    DASHBOARD_DIR.mkdir(parents=True, exist_ok=True)
+    customer = tables["customer_profitability"].copy()
+    product = tables["product_profitability"].copy()
+    segment = tables["segment_profitability"].copy()
+    positive = customer[customer["profit"] > 0].copy()
+    positive["customer_rank_share"] = range(1, len(positive) + 1)
+    positive["customer_rank_share"] = positive["customer_rank_share"] / len(positive)
+
+    data = {
+        "meta": {
+            "customers": int(customer["customer_name"].nunique()),
+            "products": int(product["product_name"].nunique()),
+            "lossCustomers": int((customer["profit"] < 0).sum()),
+            "customersFor80PctProfit": int((positive["cumulative_profit_share"] <= 0.8).sum()),
+        },
+        "customers": to_records(customer),
+        "products": to_records(product),
+        "segments": to_records(segment),
+        "abcSummary": to_records(tables["abc_summary"]),
+        "pareto": to_records(positive[["customer_name", "customer_rank_share", "cumulative_profit_share", "profit"]]),
+    }
+
+    (DASHBOARD_DIR / "data.js").write_text(
+        "window.CUSTOMER_PRODUCT_DASHBOARD_DATA = "
+        + json.dumps(data, separators=(",", ":"), ensure_ascii=False)
+        + ";\n",
+        encoding="utf-8",
+    )
+
+
 def main() -> None:
     df = load_data()
     tables = save_outputs(df)
+    save_dashboard_data(tables)
     customer_abc = tables["customer_profitability"]
     profitable = customer_abc[customer_abc["profit"] > 0]
     customers_for_80 = int((profitable["cumulative_profit_share"] <= 0.8).sum())
